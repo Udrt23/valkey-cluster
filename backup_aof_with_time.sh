@@ -13,8 +13,8 @@ for port in "${ports[@]}"; do
             mkdir -p "$backupDir"
         fi
         cp -r "/var/lib/valkey/appendonlydir_$port" "$backupDir/"
-        if [ $(ls -td /var/backups/aof_*/ | wc -l) -gt 3 ]; then
-            ls -td /var/backups/aof_* | tail -n +4 | xargs rm -rf
+        if [ $(ls -td /var/backups/aof_*/ | wc -l) -gt 6 ]; then
+            ls -td /var/backups/aof_* | tail -n +7 | xargs rm -rf
         fi
         echo "$(date '+%Y_%m_%d %H:%M:%S') Файлы успешно скопированы в $backupDir" >>"$logFile"
     else
