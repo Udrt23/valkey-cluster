@@ -11,7 +11,7 @@ checkProcess() {
         if pgrep -f "$processName $ipAddress:$port"; then
             break
         else
-            echo "$(date '+%Y-%m-%d %H:%M:%S') Процесс valkey-server на порту $port не найден. Перезапуск..." >>$logFile
+            echo "$(date '+%Y-%m-%d %H:%M:%S') Process valkey-server not found on port $port. Restarting..." >>$logFile
             if [[ $port == "6379" ]]; then
                 /opt/valkey/src/valkey-server /opt/valkey/valkey_6379.conf &
             elif [[ $port == "6381" ]]; then
@@ -22,7 +22,7 @@ checkProcess() {
         fi
     done
     if [[ $attempt -eq 3 ]]; then
-        echo "$(date '+%Y-%m-%d %H:%M:%S') Ошибка запуска процесса valkey-server на порту $port после 3 попыток." >>$logFile
+        echo "$(date '+%Y-%m-%d %H:%M:%S') Error starting process valkey-server on port $port after 3 attempts." >>$logFile
     fi
 }
 
