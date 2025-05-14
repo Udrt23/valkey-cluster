@@ -16,7 +16,7 @@ for filePath in "${logFiles[@]}"; do
         sedCommand=$(sed -i -e '1,100000d' "$filePath")
         eval $sedCommand
     done
-    echo "$(date '+%Y-%m-%d %H:%M:%S') Текущий размер файла $filePath: $(($(stat -c%s "$filePath") / 1024 / 1024)) MB" >>$logFile
+    echo "$(date '+%Y-%m-%d %H:%M:%S') Current file size $filePath: $(($(stat -c%s "$filePath") / 1024 / 1024)) MB" >>$logFile
 done
 
 # cron 0 8 * * *
