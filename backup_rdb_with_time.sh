@@ -16,9 +16,9 @@ for port in "${ports[@]}"; do
         if [ $(ls -td /var/backups/rdb_*/ | wc -l) -gt 3 ]; then
             ls -td /var/backups/rdb_* | tail -n +4 | xargs rm -rf
         fi
-        echo "$(date '+%Y_%m_%d %H:%M:%S') Файлы успешно скопированы в $backupDir" >>"$logFile"
+        echo "$(date '+%Y_%m_%d %H:%M:%S') Files copied successfully to $backupDir" >>"$logFile"
     else
-        echo "$(date '+%Y_%m_%d %H:%M:%S') Подключение отклонено для $ipAddress:$port" >>"$logFile"
+        echo "$(date '+%Y_%m_%d %H:%M:%S') Connection rejected for $ipAddress:$port" >>"$logFile"
         continue
     fi
 done
